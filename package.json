@@ -1,0 +1,25 @@
+{
+  "name": "cold-food",
+  "version": "1.0.0",
+  "description": "Century-old meals, three times a day.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbd-s/cold-food.git"
+  },
+  "author": "Michael Silverberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mbd-s/cold-food/issues"
+  },
+  "homepage": "https://github.com/mbd-s/cold-food#readme",
+  "dependencies": {
+    "twit": "^2.2.4"
+  }
+}
