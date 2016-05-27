@@ -15,12 +15,17 @@ console.log('@ColdFoodBot is running on Twitter.');
 //   }
 // });
 
-T.post('statuses/update', { status: 'The food is getting cold' }, function(err, data, response) {
-  if (err) {
-    console.log ("There was an error: ", err);
-  }
-  else {
-    console.log("Tweet tweeted");
-    console.log(data);
-  }
-});
+function tweetBreakfast(){
+  var r = Math.floor(Math.random()*100);
+  T.post('statuses/update', { status: r + ' Breakfast, May 26, 1916, Aboard SS Kamakura Maru: Queen olives, roast goose with apple sauce, and a small pastry' }, function(err, data, response) {
+    if (err) {
+      console.log ("There was an error: ", err);
+    }
+    else {
+      console.log("Tweet tweeted");
+      console.log(data);
+    }
+  });
+}
+tweetBreakfast();
+setInterval(tweetBreakfast, 1000*30);
