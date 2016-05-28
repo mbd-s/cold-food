@@ -38,4 +38,4 @@ function tweetBreakfast(){
   });
 }
 tweetBreakfast();
-setInterval(tweetBreakfast, 1000*60*60*24);
+setInterval(tweetBreakfast, 1000*60*60*8);
