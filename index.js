@@ -5,12 +5,12 @@ var Twit = require('twit');
 var config = require('./config')
 
 var T = new Twit(config);
-console.log('@ColdFoodBot is running on Twitter.');
+console.log('@ColdFoodBot is connected to Twitter.');
 
 const fs = require('fs');
-fs.readFile('/Users/mbds/Desktop/data/MenuItem.csv', (err, data) => {
+fs.readFile('/Users/mbds/Desktop/data/Dish.csv', (err, data) => {
   if (err) throw err;
-  console.log(data.toString());
+  var data = $.csv.toObjects(csv):
 });
 
 function tweetBreakfast(){
