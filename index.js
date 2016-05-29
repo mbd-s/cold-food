@@ -7,22 +7,11 @@ var config = require('./config')
 var T = new Twit(config);
 console.log('@ColdFoodBot is running on Twitter.');
 
-// var cmd = 'processing-java --sketch=`pwd`/processing_test --run'
-//
-// var exec = require('child_process').exec;
-//
-// exec(cmd, processing);
-//
-// function processing(){
-//   console.log('finished');
-// }
-//sample search
-// T.get('search/tweets', { q: 'menus', lang: 'en', count: 10 }, function(err, data, response) {
-//   var tweets = data.statuses;
-//   for (var i = 0; i < tweets.length; i++) {
-//     console.log(tweets[i].text)
-//   }
-// });
+const fs = require('fs');
+fs.readFile('/Users/mbds/Desktop/data/MenuItem.csv', (err, data) => {
+  if (err) throw err;
+  console.log(data.toString());
+});
 
 function tweetBreakfast(){
   //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
