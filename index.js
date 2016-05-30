@@ -21,7 +21,6 @@ function tweetBreakfast(){
       console.log ("There was an error: ", err);
     }
     else {
-      console.log("Breakfast tweeted");
       console.log(data);
     }
   });
@@ -35,7 +34,6 @@ function tweetLunch(){
       console.log ("There was an error: ", err);
     }
     else {
-      console.log("Lunch tweeted");
       console.log(data);
     }
   });
@@ -48,11 +46,27 @@ function tweetDinner(){
       console.log ("There was an error: ", err);
     }
     else {
-      console.log("Dinner tweeted");
       console.log(data);
     }
   });
 }
+
+var CronJob = require('cron').CronJob;
+new CronJob('00 00 07 * * 0-6', function() {
+  tweetBreakfast();
+  console.log('Breakfast tweeted');
+}, null, true, 'America/Los_Angeles');
+
+new CronJob('00 30 11 * * 0-6', function() {
+  tweetLunch();
+  console.log('Lunch tweeted');
+}, null, true, 'America/Los_Angeles');
+
+new CronJob('00 30 07 * * 0-6', function() {
+  tweetDinner();
+  console.log('Dinner tweeted');
+}, null, true, 'America/Los_Angeles');
+
 //TODO use cron tasks to sched each function to be called once a day
 tweetLunch();
 setInterval(tweetBreakfast, 1000*60*60*8);
