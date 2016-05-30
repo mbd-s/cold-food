@@ -10,7 +10,7 @@ console.log('@ColdFoodBot is connected to Twitter.');
 const fs = require('fs');
 fs.readFile('/Users/mbds/Desktop/data/Dish.csv', (err, data) => {
   if (err) throw err;
-  var data = $.csv.toObjects(csv):
+  console.log(data.toString().split('/n'));
 });
 
 function tweetBreakfast(){
