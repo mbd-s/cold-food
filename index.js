@@ -7,27 +7,52 @@ var config = require('./config')
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-const fs = require('fs');
-fs.readFile('/Users/mbds/Desktop/data/Dish.csv', (err, data) => {
-  if (err) throw err;
-  console.log(data.toString().split('/n'));
-});
+// const fs = require('fs');
+// fs.readFile('/Users/mbds/Desktop/data/Dish.csv', (err, data) => {
+//   if (err) throw err;
+//   console.log(data.toString().split('/n'));
+// });
 
 function tweetBreakfast(){
   //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
   var r = Math.floor(Math.random()*100);
-  T.post('statuses/update', { status: r + ' Breakfast, May 27, 1916, Aboard SS Kamakura Maru: Queen olives, roast goose with apple sauce, and a small pastry' }, function(err, data, response) {
+  T.post('statuses/update', { status: r + ' Breakfast, Aboard SS Kamakura Maru: Queen olives, roast goose with apple sauce, and a small pastry' }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     }
     else {
-      console.log("Tweet tweeted");
+      console.log("Breakfast tweeted");
       console.log(data);
     }
   });
 }
 
-//TODO write tweetLunch() and tweetDinner() functions
-//TODO use setInterval or setTimeout to sched each function to be called once a day
-tweetBreakfast();
+function tweetLunch(){
+  //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
+  var r = Math.floor(Math.random()*100);
+  T.post('statuses/update', { status: r + ' Lunch, Waldorf Astoria: Cotuit oysters, radishes, and trout' }, function(err, data, response) {
+    if (err) {
+      console.log ("There was an error: ", err);
+    }
+    else {
+      console.log("Lunch tweeted");
+      console.log(data);
+    }
+  });
+}
+function tweetDinner(){
+  //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
+  var r = Math.floor(Math.random()*100);
+  T.post('statuses/update', { status: r + ' Dinner, Albany Club: English mutton broth, sherry, and cigars' }, function(err, data, response) {
+    if (err) {
+      console.log ("There was an error: ", err);
+    }
+    else {
+      console.log("Dinner tweeted");
+      console.log(data);
+    }
+  });
+}
+//TODO use cron tasks to sched each function to be called once a day
+tweetLunch();
 setInterval(tweetBreakfast, 1000*60*60*8);
