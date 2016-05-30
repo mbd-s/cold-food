@@ -18,7 +18,10 @@
 ####Instructions
 <!--TODO A list of installation steps for the app itself and any dependencies - how would another developer run your site locally? -->
 -twit
+
 -dotenv
+
+-cron
 
 ---
 
