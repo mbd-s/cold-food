@@ -36,10 +36,5 @@
 ---
 
 
-####ERD
-<!--TODO Link to your entity relationship diagrams – plan out your data relationships before coding. -->
-
----
-
 ####Planned features
 <!--Descriptions of any unsolved problems or future features. -->

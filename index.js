@@ -1,9 +1,8 @@
 require('dotenv').config();
 
-var Twit = require('twit');
-
 var config = require('./config')
 
+var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
@@ -38,6 +37,7 @@ function tweetLunch(){
     }
   });
 }
+
 function tweetDinner(){
   //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
   var r = Math.floor(Math.random()*100);
@@ -57,7 +57,7 @@ new CronJob('00 00 07 * * 0-6', function() {
   console.log('Breakfast tweeted');
 }, null, true, 'America/Los_Angeles');
 
-new CronJob('00 30 11 * * 0-6', function() {
+new CronJob('00 30 12 * * 0-6', function() {
   tweetLunch();
   console.log('Lunch tweeted');
 }, null, true, 'America/Los_Angeles');
@@ -66,7 +66,3 @@ new CronJob('00 30 07 * * 0-6', function() {
   tweetDinner();
   console.log('Dinner tweeted');
 }, null, true, 'America/Los_Angeles');
-
-//TODO use cron tasks to sched each function to be called once a day
-tweetLunch();
-setInterval(tweetBreakfast, 1000*60*60*8);
