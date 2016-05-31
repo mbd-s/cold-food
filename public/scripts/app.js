@@ -4,10 +4,25 @@ angular
 
 function TweetsIndexController () {
   var vm = this;
-  vm.newTweet = {};
 
   vm.newTweet = {
-    status: 'Testing out Angular',
-    ready: false
-  };
+    status: "After dinner: Star Cocktail",
+    isReady: true
+  }
+
+  vm.tweets = [
+    {
+      status: "Breakfast: Braised Sweet Potatoes",
+      isReady: true
+    },
+    {
+      status: "Lunch: Oyster Crumb Fry",
+      isReady: true
+    },
+    {
+      status: "Dinner: Grand Saddle of Spring Lamb a la Broche",
+      isReady: false
+    }
+  ];
+
 }

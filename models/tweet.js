@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var TweetSchema = new Schema({
      status: String,
-     ready: Boolean
+     isReady: Boolean
 });
 
 var Tweet = mongoose.model('Tweet', TweetSchema);
