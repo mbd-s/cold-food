@@ -80,7 +80,7 @@ function tweetDinner(){
 
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
-new CronJob('00 00 10 * * 0-6', function() {
+new CronJob('00 15 07 * * 0-6', function() {
   tweetBreakfast();
   console.log('Breakfast tweeted');
 }, null, true, 'America/Los_Angeles');
