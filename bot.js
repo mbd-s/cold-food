@@ -1,19 +1,3 @@
-//website
-var express = require('express');
-var app = express();
-//TODO basic auth
-app.use(express.static('public'));
-
-app.get('/', function (req, res) {
-  console.log('req = ', req);
-  console.log('res = ', res);
-  res.sendFile('views/index.html' , { root : __dirname});
-});
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log('ColdFoodBot app listening at http://localhost:3000/');
-});
-
 //configure Twitter bot
 require('dotenv').config();
 

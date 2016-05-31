@@ -2,7 +2,7 @@
   "name": "cold-food",
   "version": "1.0.0",
   "description": "Century-old meals, three times a day.",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "doc": "docs"
   },
@@ -21,9 +21,12 @@
   "homepage": "https://github.com/mbd-s/cold-food#readme",
   "dependencies": {
     "babyparse": "^0.4.6",
+    "body-parser": "^1.15.1",
     "cron": "^1.1.0",
     "dotenv": "^2.0.0",
+    "ejs": "^2.4.2",
     "express": "^4.13.4",
+    "mongoose": "^4.4.19",
     "twit": "^2.2.4"
   }
 }
