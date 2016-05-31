@@ -36,7 +36,7 @@ function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
   return rows[randomDishId].name;
 }
-//And pass it to the bot
+//And make it available to the bot
 var randomDish = getRandomDish();
 console.log(randomDish);
 
@@ -77,6 +77,7 @@ function tweetDinner(){
   });
 }
 
+//schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
 new CronJob('00 00 07 * * 0-6', function() {
   tweetBreakfast();
