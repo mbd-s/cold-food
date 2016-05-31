@@ -45,7 +45,6 @@ function update(req, res) {
       res.json(savedTweet);
     });
   });
-
 }
 
 module.exports = {
