@@ -4,29 +4,48 @@
 
 ---
 
+[Twitter](twitter.com/coldfoodbot)
+
 [GitHub](https://github.com/mbd-s/cold-food)
 
 [Heroku](http://cold-food.herokuapp.com/)
+
 
 ---
 
 ####Technologies
 <!--TODO A list of the technologies used. -->
--Node.js
+JavaScript
+
+Node.js
+
+Angular
+
+Express
+
+MongoDB
 
 ---
 
 ####Instructions
 <!--TODO A list of installation steps for the app itself and any dependencies - how would another developer run your site locally? -->
--twit
+**Dependencies:**
 
--dotenv
+babyparse
 
--cron
+body-parser
 
--express
+cron
 
--babyparse
+dotenv
+
+ejs
+
+express
+
+mongoose
+
+twit
 
 ---
 
@@ -43,3 +62,8 @@
 
 ####Planned features
 <!--Descriptions of any unsolved problems or future features. -->
+
+---
+
+Favicon by Luis Prado, licensed under [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/).
+
