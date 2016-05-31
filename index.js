@@ -23,11 +23,16 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-// const fs = require('fs');
-// fs.readFile('/Users/mbds/Desktop/data/Dish.csv', (err, data) => {
-//   if (err) throw err;
-//   console.log(data.toString().split('/n'));
-// });
+//load CSV data
+const fs = require('fs');
+fs.readFile('/Users/mbds/Desktop/cold-food-data/Dish.csv', (err, data) => {
+  if (err) throw err;
+  console.log(data.toString());
+});
+fs.readFile('/Users/mbds/Desktop/cold-food-data/Menu.csv', (err, data) => {
+  if (err) throw err;
+  console.log(data.toString());
+});
 
 function tweetBreakfast(){
   //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
