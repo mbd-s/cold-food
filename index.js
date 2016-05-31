@@ -29,14 +29,21 @@ filePath = "menu-data/Dish.csv";
 parsed = Baby.parseFiles(filePath, {
   header: true
 });
-rows = parsed.data
-console.log(rows);
+rows = parsed.data;
+
+//Pick a random menu item
+function getRandomDish() {
+  var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
+  return rows[randomDishId].name;
+}
+//And pass it to the bot
+var randomDish = getRandomDish();
 
 //bot functions
+//TODO add multiple unique items
+//TODO check against character limit; retry if too long
 function tweetBreakfast(){
-  //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
-  var r = Math.floor(Math.random()*100);
-  T.post('statuses/update', { status: r + ' Breakfast, Aboard SS Kamakura Maru: Queen olives, roast goose with apple sauce, and a small pastry' }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Breakfast: ' + randomDish }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     }
@@ -47,9 +54,7 @@ function tweetBreakfast(){
 }
 
 function tweetLunch(){
-  //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
-  var r = Math.floor(Math.random()*100);
-  T.post('statuses/update', { status: r + ' Lunch, Waldorf Astoria: Cotuit oysters, radishes, and trout' }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Lunch: ' + randomDish }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     }
@@ -60,9 +65,7 @@ function tweetLunch(){
 }
 
 function tweetDinner(){
-  //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
-  var r = Math.floor(Math.random()*100);
-  T.post('statuses/update', { status: r + ' Dinner, Albany Club: English mutton broth, sherry, and cigars' }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Dinner: ' + randomDish }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     }
