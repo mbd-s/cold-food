@@ -14,7 +14,7 @@ app.listen(process.env.PORT || 3000, function () {
   console.log('ColdFoodBot app listening at http://localhost:3000/');
 });
 
-//Twitter bot
+//configure Twitter bot
 require('dotenv').config();
 
 var config = require('./config')
@@ -23,17 +23,16 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-//load CSV data
-const fs = require('fs');
-fs.readFile('/Users/mbds/Desktop/cold-food-data/Dish.csv', (err, data) => {
-  if (err) throw err;
-  console.log(data.toString());
+//read CSV data with baby parse
+var Baby = require('babyparse');
+filePath = "menu-data/Dish.csv";
+parsed = Baby.parseFiles(filePath, {
+  header: true
 });
-fs.readFile('/Users/mbds/Desktop/cold-food-data/Menu.csv', (err, data) => {
-  if (err) throw err;
-  console.log(data.toString());
-});
+rows = parsed.data
+console.log(rows);
 
+//bot functions
 function tweetBreakfast(){
   //appending a random number so as not to run afoul of Twitter's duplicate-tweet spam filters
   var r = Math.floor(Math.random()*100);
