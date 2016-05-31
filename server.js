@@ -23,7 +23,7 @@ app.get('/tweets/:tweetId', controllers.tweets.show);
 app.delete('/:tweetId', controllers.tweets.destroy);
 app.put('/tweets/:tweetId', controllers.tweets.update);
 
-// app.get('/templates/:name', controllers.tweets.templates);
+app.get('/templates/:name', controllers.tweets.templates);
 
 app.get('*', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');

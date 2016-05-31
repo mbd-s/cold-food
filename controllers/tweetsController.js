@@ -1,9 +1,9 @@
 var db = require('../models');
 
-// function templates(req, res) {
-//   var name = req.params.name;
-//   res.render('templates/' + name);
-// }
+function templates(req, res) {
+  var name = req.params.name;
+  res.render('templates/' + name);
+}
 
 function index(req, res) {
   db.Tweet.find({}, function(err, allTweets) {
@@ -11,10 +11,19 @@ function index(req, res) {
   });
 }
 
+function create(req, res) {
+  console.log('body', req.body);
+  db.Tweet.create(req.body, function(err, tweet) {
+    if (err) { console.log('Error: ', err); }
+    console.log(tweet);
+    res.json(tweet);
+  });
+}
+
 function show(req, res) {
   db.Tweet.findById(req.params.tweetId, function(err, foundTweet) {
     if(err) { console.log('tweetsController.show error', err); }
-    console.log('tweetsController.show responding with', foundAlbum);
+    console.log('tweetsController.show responding with', foundTweet);
     res.json(foundTweet);
   });
 }
@@ -41,7 +50,10 @@ function update(req, res) {
 
 module.exports = {
   index: index,
+  create: create,
   show: show,
   destroy: destroy,
   update: update
 };
+
+module.exports.templates = templates;

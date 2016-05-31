@@ -11,10 +11,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="/scripts/app.js"></script>
+
   </head>
   <body>
     <div class="container">
       <h3>The food is getting cold.</h3>
+    </div>
+    <div class="container" ng-controller="TweetsIndexController as tweetsIndexCtrl">
+      <div>
+        <p>{{tweetsIndexCtrl.newTweet}}</p>
+      </div>
     </div>
   </body>
 </html>
