@@ -1,7 +1,7 @@
 //website
 var express = require('express');
 var app = express();
-//TODO allow CORS?
+//TODO basic auth
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
@@ -23,7 +23,8 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-//read CSV data with baby parse
+//TODO seed task or module
+//read CSV data with babyparse
 var Baby = require('babyparse');
 filePath = "menu-data/Dish.csv";
 parsed = Baby.parseFiles(filePath, {
@@ -79,7 +80,7 @@ function tweetDinner(){
 
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
-new CronJob('00 00 07 * * 0-6', function() {
+new CronJob('00 00 10 * * 0-6', function() {
   tweetBreakfast();
   console.log('Breakfast tweeted');
 }, null, true, 'America/Los_Angeles');
