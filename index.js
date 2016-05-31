@@ -38,9 +38,11 @@ function getRandomDish() {
 }
 //And pass it to the bot
 var randomDish = getRandomDish();
+console.log(randomDish);
 
-//bot functions
+//bot methods
 //TODO add multiple unique items
+//TODO make sure dishes are normalized
 //TODO check against character limit; retry if too long
 function tweetBreakfast(){
   T.post('statuses/update', { status: 'Breakfast: ' + randomDish }, function(err, data, response) {
