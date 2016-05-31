@@ -20,9 +20,14 @@
       <h3>The food is getting cold.</h3>
     </div>
     <div class="container" ng-controller="TweetsIndexController as tweetsIndexCtrl">
-      <div>
-        <p>{{tweetsIndexCtrl.newTweet}}</p>
-      </div>
+
+        <div ng-repeat="tweet in tweetsIndexCtrl.tweets | orderBy: 'isReady'">
+          <strong>Tweet: </strong>"{{tweet.status}}"
+          <strong>Ready to be tweeted: </strong>{{tweet.isReady}}
+        </div>
+
+      <strong>Tweet: </strong><input type="text" class="form-control" placeholder="Tweet" ng-model="tweetsIndexCtrl.newTweet.status">
+      <input type="checkbox" id="cbox" ng-model="tweetsIndexCtrl.newTweet.isReady"><label for="cbox">"Ready"</cbox>
     </div>
   </body>
 </html>
