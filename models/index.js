@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/cold-food");
+mongoose.connect( process.env.MONGODB_URI ||
+                  process.env.MONGOHQ_URL ||
+                  "mongodb://localhost/cold-food" );
 
 var Tweet = require('./tweet');
 
