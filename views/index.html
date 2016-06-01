@@ -12,22 +12,17 @@
     <link rel="stylesheet" href="/styles/styles.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
     <script src="/scripts/app.js"></script>
+    <script src="scripts/controllers/TweetsIndexController.js"></script>
 
   </head>
   <body>
     <div class="container">
       <h3>The food is getting cold.</h3>
     </div>
-    <div class="container" ng-controller="TweetsIndexController as tweetsIndexCtrl">
 
-        <div ng-repeat="tweet in tweetsIndexCtrl.tweets | orderBy: 'isReady'">
-          <strong>Tweet: </strong>"{{tweet.status}}"
-          <strong>Ready to be tweeted: </strong>{{tweet.isReady}}
-        </div>
+    <div ng-view></div>
 
-      <input type="text" class="form-control" placeholder="Tweet" ng-model="tweetsIndexCtrl.newTweet.status">
-      <input type="checkbox" ng-model="tweetsIndexCtrl.newTweet.isReady"><label for="checkbox"> Ready</cbox>
-    </div>
   </body>
 </html>

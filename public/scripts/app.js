@@ -1,28 +1,17 @@
 angular
-  .module('cold-food', [])
-  .controller('TweetsIndexController', TweetsIndexController);
+  .module('cold-food', ['ngRoute'])
+  .config(config)
 
-function TweetsIndexController () {
-  var vm = this;
+function config ($routeProvider, $locationProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'templates/tweets',
+      controllerAs: 'tweetsIndexCtrl',
+      controller: 'TweetsIndexController'
+    });
 
-  vm.newTweet = {
-    status: "After dinner: Star Cocktail",
-    isReady: true
-  }
-
-  vm.tweets = [
-    {
-      status: "Breakfast: Braised Sweet Potatoes",
-      isReady: true
-    },
-    {
-      status: "Lunch: Oyster Crumb Fry",
-      isReady: true
-    },
-    {
-      status: "Dinner: Grand Saddle of Spring Lamb a la Broche",
-      isReady: false
-    }
-  ];
-
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
 }

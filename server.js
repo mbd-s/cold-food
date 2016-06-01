@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+//TODO add basic-auth
+
 var bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/public'));
@@ -13,16 +15,14 @@ app.set('view engine', 'html');
 
 var controllers = require('./controllers');
 
-//TODO add basic auth
-
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/tweets', controllers.tweets.index);
 app.get('/tweets/:tweetId', controllers.tweets.show);
-app.delete('/:tweetId', controllers.tweets.destroy);
-app.put('/tweets/:tweetId', controllers.tweets.update);
+app.delete('/tweets/:tweetId', controllers.tweets.destroy);
+app.patch('/tweets/:tweetId', controllers.tweets.update);
 
 app.get('/templates/:name', controllers.tweets.templates);
 
