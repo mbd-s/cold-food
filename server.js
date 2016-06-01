@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var db = require('./models');
 
-//TODO add basic-auth
+var wwwhisper = require('connect-wwwhisper');
+app.use(wwwhisper());
 
 var bodyParser = require('body-parser');
 
