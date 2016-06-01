@@ -76,7 +76,7 @@ new CronJob('00 30 12 * * 0-6', function() {
   console.log('Lunch tweeted');
 }, null, true, 'America/Los_Angeles');
 
-new CronJob('00 30 07 * * 0-6', function() {
+new CronJob('00 30 19 * * 0-6', function() {
   tweetDinner();
   console.log('Dinner tweeted');
 }, null, true, 'America/Los_Angeles');
