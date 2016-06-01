@@ -2,20 +2,16 @@ var db = require('./models');
 
 var tweets_list = [
   {
-    status: "Breakfast: Braised Sweet Potatoes",
-    isReady: true
+    status: "Breakfast: Braised Sweet Potatoes"
   },
   {
-    status: "Lunch: Oyster Crumb Fry",
-    isReady: true
+    status: "Lunch: Oyster Crumb Fry"
   },
   {
-    status: "Dinner: Grand Saddle of Spring Lamb a la Broche",
-    isReady: false
+    status: "Dinner: Grand Saddle of Spring Lamb a la Broche"
   },
   {
-    status: "After dinner: Star Cocktail",
-    isReady: true
+    status: "After dinner: Star Cocktail"
   }
 ];
 
