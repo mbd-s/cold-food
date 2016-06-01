@@ -1,8 +1,8 @@
-<div class="container">
 
   <div ng-repeat="tweet in tweetsIndexCtrl.tweets">
 
     <input ng-model="tweet.status" type="text" class="form-control input-md">
+    <!-- TODO add character count -->
     <input type="checkbox" ng-model="tweet.isReady">
     <label for="checkbox"> Ready</label>
     <br>
@@ -17,4 +17,3 @@
     <br>
     <br>
   </div>
-</div>
