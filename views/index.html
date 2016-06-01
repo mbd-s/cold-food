@@ -24,6 +24,9 @@
         <div ng-repeat="tweet in tweetsIndexCtrl.tweets | orderBy: 'isReady'">
           <strong>Tweet: </strong>"{{tweet.status}}"
           <strong>Ready to be tweeted: </strong>{{tweet.isReady}}
+          <button class='btn btn-danger' ng-click="tweetsIndexCtrl.deleteTweet(tweet)">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
         </div>
 
       <input type="text" class="form-control" placeholder="Tweet" ng-model="tweetsIndexCtrl.newTweet.status">
