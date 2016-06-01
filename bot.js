@@ -16,7 +16,6 @@ parsed = Baby.parseFiles(filePath, {
 });
 rows = parsed.data;
 
-
 //Pick a random menu item
 function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
@@ -32,15 +31,13 @@ function getRandomDish() {
 }
 
 // And make it available to the bot
+//TODO simplify this brute-force method of getting unique dishes
 var randomDish1 = getRandomDish();
 var randomDish2 = getRandomDish();
 var randomDish3 = getRandomDish();
-// console.log(randomDish1);
-
 
 //bot methods
-//TODO add multiple unique items
-//TODO make sure dishes are normalized
+//TODO make sure dish names are normalized
 function tweetBreakfast(){
   T.post('statuses/update', { status: 'Breakfast: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
     if (err) {
