@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var mongoose = require('mongoose');
+
 
 //TODO add basic-auth
 
