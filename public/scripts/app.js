@@ -15,10 +15,21 @@ function TweetsIndexController ( $http ) {
       console.log('There was an error getting the data', response);
     });
 
+    vm.editTweet = function (tweet) {
+    $http({
+      method: 'PUT',
+      url: '/tweets/' + tweet._id,
+      data: tweet
+    }).then(function successCallback(json) {
+    }, function errorCallback(response) {
+      console.log('There was an error editing the data', response);
+    });
+  }
+
   vm.deleteTweet = function (tweet) {
     $http({
       method: 'DELETE',
-      url: '/tweets/'+ tweet._id
+      url: '/tweets/' + tweet._id
     }).then(function successCallback(json) {
       var index = vm.tweets.indexOf(tweet);
       vm.tweets.splice(index, 1);

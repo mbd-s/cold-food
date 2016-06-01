@@ -19,18 +19,26 @@
     <div class="container">
       <h3>The food is getting cold.</h3>
     </div>
+
     <div class="container" ng-controller="TweetsIndexController as tweetsIndexCtrl">
 
-        <div ng-repeat="tweet in tweetsIndexCtrl.tweets | orderBy: 'isReady'">
-          <strong>Tweet: </strong>"{{tweet.status}}"
-          <strong>Ready to be tweeted: </strong>{{tweet.isReady}}
+        <div ng-repeat="tweet in tweetsIndexCtrl.tweets">
+
+          <input ng-model="tweet.status" type="text" class="form-control input-md">
+          <input type="checkbox" ng-model="tweet.isReady">
+          <label for="checkbox"> Ready</label>
+          <br>
+
+          <button class='btn btn-success' ng-click="tweetsIndexCtrl.editTweet(tweet); editing = false">
+            Save changes
+          </button>
+
           <button class='btn btn-danger' ng-click="tweetsIndexCtrl.deleteTweet(tweet)">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
           </button>
+          <br>
+          <br>
         </div>
-
-      <input type="text" class="form-control" placeholder="Tweet" ng-model="tweetsIndexCtrl.newTweet.status">
-      <input type="checkbox" ng-model="tweetsIndexCtrl.newTweet.isReady"><label for="checkbox"> Ready</cbox>
     </div>
   </body>
 </html>
