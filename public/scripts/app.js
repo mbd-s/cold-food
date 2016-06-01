@@ -1,6 +1,21 @@
 angular
-  .module('cold-food', [])
+  .module('cold-food', ['ngRoute'])
+  .config(config)
   .controller('TweetsIndexController', TweetsIndexController);
+
+function config ($routeProvider, $locationProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'templates/tweets',
+      controllerAs: 'tweetsIndexCtrl',
+      controller: 'TweetsIndexController'
+    });
+
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+}
 
 TweetsIndexController.$inject = ['$http'];
 function TweetsIndexController ( $http ) {

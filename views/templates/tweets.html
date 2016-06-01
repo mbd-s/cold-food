@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div ng-repeat="tweet in tweetsIndexCtrl.tweets">
+
+    <input ng-model="tweet.status" type="text" class="form-control input-md">
+    <input type="checkbox" ng-model="tweet.isReady">
+    <label for="checkbox"> Ready</label>
+    <br>
+
+    <button class='btn btn-success' ng-click="tweetsIndexCtrl.editTweet(tweet); editing = false">
+      Save changes
+    </button>
+
+    <button class='btn btn-danger' ng-click="tweetsIndexCtrl.deleteTweet(tweet)">
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </button>
+    <br>
+    <br>
+  </div>
+</div>
