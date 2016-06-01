@@ -32,16 +32,17 @@ function getRandomDish() {
 }
 
 // And make it available to the bot
-var randomDish = getRandomDish();
-console.log(randomDish);
+var randomDish1 = getRandomDish();
+var randomDish2 = getRandomDish();
+var randomDish3 = getRandomDish();
+// console.log(randomDish1);
 
 
 //bot methods
 //TODO add multiple unique items
 //TODO make sure dishes are normalized
-//TODO check against character limit; retry if too long
 function tweetBreakfast(){
-  T.post('statuses/update', { status: 'Breakfast: ' + randomDish }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Breakfast: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     }
@@ -52,7 +53,7 @@ function tweetBreakfast(){
 }
 
 function tweetLunch(){
-  T.post('statuses/update', { status: 'Lunch: ' + randomDish }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Lunch: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     }
@@ -63,7 +64,7 @@ function tweetLunch(){
 }
 
 function tweetDinner(){
-  T.post('statuses/update', { status: 'Dinner: ' + randomDish }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Dinner: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     }
