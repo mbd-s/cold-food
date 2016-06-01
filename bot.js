@@ -24,6 +24,8 @@ function getRandomDish() {
 //And make it available to the bot
 var randomDish = getRandomDish();
 console.log(randomDish);
+console.log(randomDish);
+
 
 //bot methods
 //TODO add multiple unique items

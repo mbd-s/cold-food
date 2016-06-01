@@ -1,0 +1,38 @@
+.header {
+  margin-bottom: 50px;
+}
+
+input, select, textarea{
+    color: blue;
+}
+
+textarea:focus, input:focus {
+    color: blue;
+}
+
+.btn {
+  margin-bottom: 30px
+}
+
+.btn.outline {
+	background: none;
+	padding: 8px 12px;
+}
+
+.btn-primary.outline {
+	border: 2px solid grey;
+	color: grey;
+}
+
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline.active {
+  background: none;
+  color: blue;
+	border-color: blue;
+  outline: none;
+}
+.btn-primary.outline:active {
+  background: none;
+  border-color: grey;
+	color: grey;
+	box-shadow: none;
+}

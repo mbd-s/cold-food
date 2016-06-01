@@ -33,6 +33,8 @@ babyparse
 
 body-parser
 
+connect-wwwhisper
+
 cron
 
 dotenv
@@ -60,7 +62,7 @@ twit
 
 ####Planned features
 <!--Descriptions of any unsolved problems or future features. -->
-
+Persona, which wwwhisper runs on, is shutting down 30. November.  Wwwhisper plans to migrate to a different service, but an alternative auth solution should be considered before then.
 ---
 
 Favicon by Luis Prado, licensed under [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/).

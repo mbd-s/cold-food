@@ -1,5 +1,6 @@
+<div ng-repeat="tweet in tweetsIndexCtrl.tweets">
 
-  <div ng-repeat="tweet in tweetsIndexCtrl.tweets">
+  <div class="tweet-view">
 
     <input ng-model="tweet.status" type="text" class="form-control input-md">
     <!-- TODO add character count -->
@@ -7,13 +8,13 @@
     <label for="checkbox"> Ready</label>
     <br>
 
-    <button class='btn btn-success' ng-click="tweetsIndexCtrl.editTweet(tweet); editing = false">
+    <button type="button" class="btn btn-primary outline" ng-click="tweetsIndexCtrl.editTweet(tweet); editing = false">
       Save changes
     </button>
 
-    <button class='btn btn-danger' ng-click="tweetsIndexCtrl.deleteTweet(tweet)">
+    <button type="button" class="btn btn-primary btn-sm outline" ng-click="tweetsIndexCtrl.deleteTweet(tweet)">
       <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
     </button>
-    <br>
-    <br>
+
   </div>
+</div>
