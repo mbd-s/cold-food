@@ -16,14 +16,23 @@ parsed = Baby.parseFiles(filePath, {
 });
 rows = parsed.data;
 
+
 //Pick a random menu item
 function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
-  return rows[randomDishId].name;
+  var foundDish = rows[randomDishId].name;
+  console.log(foundDish, foundDish.length);
+  if (foundDish.length > 40) {
+    console.log("Dish is too long for Twitter. Retrying!");
+    getRandomDish();
+  } else {
+      console.log("Found a dish!", foundDish);
+      return foundDish;
+  }
 }
-//And make it available to the bot
+
+// And make it available to the bot
 var randomDish = getRandomDish();
-console.log(randomDish);
 console.log(randomDish);
 
 
