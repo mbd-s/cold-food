@@ -1,14 +1,12 @@
 ## [@coldfoodbot](twitter.com/coldfoodbot) (Cold Food Bot)
 
-###A Twitter bot tweeting century-old meals, three times a day. Data comes from @nypl's ['What's on the Menu?'](http://menus.nypl.org/) collection. Runs off a custom Twitter dashboard in Angular.
+###A Twitter bot tweeting century-old meals, three times a day. Data comes from @nypl's ['What's on the Menu?'](http://menus.nypl.org/) collection. Runs off a custom Twitter dashboard.
 
 ---
 
 [Twitter](twitter.com/coldfoodbot)
 
 [GitHub](https://github.com/mbd-s/cold-food)
-
-[Heroku](http://cold-food.herokuapp.com/)
 
 
 ---
@@ -66,4 +64,3 @@ twit
 ---
 
 Favicon by Luis Prado, licensed under [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/).
-
