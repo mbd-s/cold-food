@@ -20,12 +20,11 @@ rows = parsed.data;
 function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
   var foundDish = rows[randomDishId].name;
-  console.log(foundDish, foundDish.length);
   if (foundDish.length > 40) {
-    console.log("Dish is too long for Twitter. Retrying!");
+    console.log(foundDish, " is too long for Twitter. Retrying!");
     getRandomDish();
   } else {
-      console.log("Found a dish!", foundDish);
+      console.log("Found a dish: ", foundDish);
       return foundDish;
   }
 }
@@ -42,8 +41,7 @@ function tweetBreakfast(){
   T.post('statuses/update', { status: 'Breakfast: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
-    }
-    else {
+    } else {
       console.log(data);
     }
   });
@@ -53,8 +51,7 @@ function tweetLunch(){
   T.post('statuses/update', { status: 'Lunch: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
-    }
-    else {
+    } else {
       console.log(data);
     }
   });
@@ -64,8 +61,7 @@ function tweetDinner(){
   T.post('statuses/update', { status: 'Dinner: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
-    }
-    else {
+    } else {
       console.log(data);
     }
   });
