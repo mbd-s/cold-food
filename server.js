@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose');
-
+var db = require('./models');
 
 //TODO add basic-auth
 
