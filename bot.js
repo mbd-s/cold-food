@@ -8,7 +8,7 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-//read CSV data with babyparse
+//read CSV data
 var Baby = require('babyparse');
 filePath = "menu-data/Dish.csv";
 parsed = Baby.parseFiles(filePath, {
@@ -30,6 +30,7 @@ function getRandomDish() {
   }
 }
 
+//Generate a day's worth of tweets
 function populateTweets(){
   var oneDayOfTweets = [
     {
