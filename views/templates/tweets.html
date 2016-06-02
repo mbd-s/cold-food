@@ -4,9 +4,8 @@
 
     <input ng-model="tweet.status" type="text" class="form-control input-md">
     <!-- TODO add character count -->
-    <input type="checkbox" ng-model="tweet.isReady">
-    <label for="checkbox"> Ready</label>
-    <br>
+    <!-- <input type="checkbox" ng-model="tweet.isReady">
+    <label for="checkbox"> Ready</label> -->
 
     <button type="button" class="btn btn-primary outline" ng-click="tweetsIndexCtrl.editTweet(tweet); editing = false">
       Save changes
@@ -15,6 +14,10 @@
     <button type="button" class="btn btn-primary btn-sm outline" ng-click="tweetsIndexCtrl.deleteTweet(tweet)">
       <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
     </button>
+
+    <!-- <button class="btn btn-sm btn-primary outline">
+      <span class="glyphicon glyphicon-refresh spinning"></span>
+    </button> -->
 
   </div>
 </div>
