@@ -17,22 +17,18 @@ parsed = Baby.parseFiles(filePath, {
 rows = parsed.data;
 
 //Generate a random dish
+//TODO make sure dish names are normalized
 function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
   var foundDish = rows[randomDishId].name;
+  foundDish = foundDish.trim();
   if (foundDish.length > 40) {
     console.log(foundDish, " is too long for Twitter. Retrying!");
     getRandomDish();
   } else {
       console.log("Found a dish: ", foundDish);
-      return foundDish;
   }
 }
-
-// And make three of them available to the bot
-var randomDish1 = getRandomDish();
-var randomDish2 = getRandomDish();
-var randomDish3 = getRandomDish();
 
 function populateTweets(){
   var oneDayOfTweets = [
@@ -56,9 +52,8 @@ function populateTweets(){
 }
 
 //bot methods
-//TODO make sure dish names are normalized
 function tweetBreakfast(){
-  T.post('statuses/update', { status: 'Breakfast: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -68,7 +63,7 @@ function tweetBreakfast(){
 }
 
 function tweetLunch(){
-  T.post('statuses/update', { status: 'Lunch: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -78,7 +73,7 @@ function tweetLunch(){
 }
 
 function tweetDinner(){
-  T.post('statuses/update', { status: 'Dinner: ' + randomDish1 + '; ' + randomDish2 + '; and ' + randomDish3 }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Dinner: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -88,7 +83,7 @@ function tweetDinner(){
 }
 
 function tweetSnack(){
-  T.post('statuses/update', { status: 'Snack: ' + randomDish1 + ' and ' + randomDish2 }, function(err, data, response) {
+  T.post('statuses/update', { status: 'Snack: ' + getRandomDish() + ' and ' + getRandomDish() }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
