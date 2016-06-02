@@ -17,7 +17,6 @@ parsed = Baby.parseFiles(filePath, {
 rows = parsed.data;
 
 //Generate a random dish
-//TODO make sure dish names are normalized
 function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
   var foundDish = rows[randomDishId].name;
@@ -27,6 +26,7 @@ function getRandomDish() {
     getRandomDish();
   } else {
       console.log("Found a dish: ", foundDish);
+      return foundDish;
   }
 }
 
