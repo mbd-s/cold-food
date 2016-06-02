@@ -2,6 +2,7 @@
 require('dotenv').config();
 
 var config = require('./config')
+var db = require('./models');
 
 var Twit = require('twit');
 var T = new Twit(config);
@@ -32,6 +33,28 @@ function getRandomDish() {
 var randomDish1 = getRandomDish();
 var randomDish2 = getRandomDish();
 var randomDish3 = getRandomDish();
+
+function populateTweets(){
+  var oneDayOfTweets = [
+    {
+      status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
+    },
+    {
+      status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
+    },
+    {
+      status: 'Dinner: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
+    },
+    {
+      status: 'Snack: ' + getRandomDish() + ' and ' + getRandomDish()
+    }
+  ];
+
+  db.Tweet.create(oneDayOfTweets, function(err, tweets){
+    if (err) { return console.log('Error: ', err); }
+  });
+}
+populateTweets();
 
 //bot methods
 //TODO make sure dish names are normalized
