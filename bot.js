@@ -51,13 +51,11 @@ function populateTweets(){
     if (err) { return console.log('Error: ', err); }
   });
 }
-
-//add property to tweets: wasTweeted
-//set default to false
-//change to true when tweeted
-//don't show on page if true
-
+console.log()
+//TODO change isTweeted to true when tweeted
+//TODO don't show on page if true
 //tweet methods
+//TODO pull statuses from populateTweets();
 function tweetBreakfast(){
   T.post('statuses/update', { status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
     if (err) {
