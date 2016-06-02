@@ -2,25 +2,18 @@ var db = require('./models');
 
 var tweets_list = [
   {
-    status: "Breakfast: Braised Sweet Potatoes"
+    status: "Breakfast: Terrine of Duckling, Marie Stuart; Half Cold Lobster, Mayonnaise; and Roast veal"
   },
   {
-    status: "Lunch: Oyster Crumb Fry"
+    status: "Lunch: Crab Meat à la Dewey; Whitefish, Bernaise sauce; and Apfel-Pfannkuchen"
   },
   {
-    status: "Dinner: Grand Saddle of Spring Lamb a la Broche"
+    status: "Dinner: Fried Filet of Sole, Tartare Sauce; Brandied Peaches; and Broiled Capon (half)"
   },
   {
-    status: "After dinner: Star Cocktail"
+    status: "Snack: Boiled Halibut, lobster sauce and Pescado Sherry (dry and delicate)"
   }
 ];
-
-var dinnerTweet = new db.Tweet({
-  status:
-});
-
-console.log(tweet.status);
-db.Tweet.create(dinnerTweet);
 
 db.Tweet.remove({}, function(err, tweets){
   if(err) {
