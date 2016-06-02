@@ -52,7 +52,12 @@ function populateTweets(){
   });
 }
 
-//bot methods
+//add property to tweets: wasTweeted
+//set default to false
+//change to true when tweeted
+//don't show on page if true
+
+//tweet methods
 function tweetBreakfast(){
   T.post('statuses/update', { status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
     if (err) {
@@ -96,7 +101,7 @@ function tweetSnack(){
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 00 00 * * 0-6', function() {
+new CronJob('00 00 22 * * 0-6', function() {
   populateTweets()
   console.log('Tweets generated');
 }, null, true, 'America/Los_Angeles');
