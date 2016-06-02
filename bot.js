@@ -7,7 +7,6 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-//TODO seed task or module
 //read CSV data with babyparse
 var Baby = require('babyparse');
 filePath = "menu-data/Dish.csv";
@@ -16,7 +15,7 @@ parsed = Baby.parseFiles(filePath, {
 });
 rows = parsed.data;
 
-//Pick a random menu item
+//Generate a random dish
 function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
   var foundDish = rows[randomDishId].name;
@@ -29,8 +28,7 @@ function getRandomDish() {
   }
 }
 
-// And make it available to the bot
-//TODO simplify this brute-force method of getting unique dishes
+// And make three of them available to the bot
 var randomDish1 = getRandomDish();
 var randomDish2 = getRandomDish();
 var randomDish3 = getRandomDish();
@@ -66,6 +64,17 @@ function tweetDinner(){
     }
   });
 }
+
+function tweetSnack(){
+  T.post('statuses/update', { status: 'Snack: ' + randomDish1 + ' and ' + randomDish2 }, function(err, data, response) {
+    if (err) {
+      console.log ("There was an error: ", err);
+    } else {
+      console.log(data);
+    }
+  });
+}
+tweetSnack();
 
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
