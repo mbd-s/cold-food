@@ -4,6 +4,8 @@
 
 input, select, textarea{
     color: blue;
+    margin-bottom: 7px;
+    border: 2px solid;
 }
 
 textarea:focus, input:focus {
@@ -36,3 +38,21 @@ textarea:focus, input:focus {
 	color: grey;
 	box-shadow: none;
 }
+/*.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+    color: blue;
+}
+.glyphicon-refresh.spinning {
+  transform-origin: 48% 50%;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}*/

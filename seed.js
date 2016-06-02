@@ -15,6 +15,13 @@ var tweets_list = [
   }
 ];
 
+var dinnerTweet = new db.Tweet({
+  status:
+});
+
+console.log(tweet.status);
+db.Tweet.create(dinnerTweet);
+
 db.Tweet.remove({}, function(err, tweets){
   if(err) {
     console.log('Error removing tweets: ', err);
