@@ -54,7 +54,6 @@ function populateTweets(){
     if (err) { return console.log('Error: ', err); }
   });
 }
-populateTweets();
 
 //bot methods
 //TODO make sure dish names are normalized
@@ -100,6 +99,12 @@ function tweetSnack(){
 
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
+
+new CronJob('00 00 00 * * 0-6', function() {
+  populateTweets()
+  console.log('Tweets generated');
+}, null, true, 'America/Los_Angeles');
+
 new CronJob('00 15 07 * * 0-6', function() {
   tweetBreakfast();
   console.log('Breakfast tweeted');
