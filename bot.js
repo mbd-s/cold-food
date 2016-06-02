@@ -74,7 +74,6 @@ function tweetSnack(){
     }
   });
 }
-tweetSnack();
 
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
