@@ -48,10 +48,11 @@ function populateTweets(){
   ];
 
   db.Tweet.create(oneDayOfTweets, function(err, tweets){
+    console.log(tweets);
     if (err) { return console.log('Error: ', err); }
   });
 }
-console.log()
+
 //TODO change isTweeted to true when tweeted
 //TODO don't show on page if true
 //tweet methods
