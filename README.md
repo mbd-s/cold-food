@@ -12,7 +12,7 @@
 ---
 
 ####Technologies
-<!--TODO A list of the technologies used. -->
+
 JavaScript
 
 Node.js
@@ -25,11 +25,30 @@ MongoDB
 
 Mongoose
 
+Bootstrap
+
+Heroku
+
 ---
 
 ####Instructions
-<!--TODO A list of installation steps for the app itself and any dependencies - how would another developer run your site locally? -->
+
+
+To run your own bot, start by cloning this repo and installing the dependencies:
+
+`$ npm install`
+
+ You'll need to get your own keys to connect to Twitter. Sign up for a new Twitter account and [register an app](https://dev.twitter.com/) for it. Click the "Keys and Access Tokens" tab and click "Generate Consumer Key and Secret." Note your Consumer Key, Consumer Secret, Access Token, and Access Token Secret—you'll need to replace the placeholders in `config.js` with these. (Make sure to hide them if you're using GitHub.) To run the bot:
+
+`$ node bot.js`
+
+To run the 
+
 **Dependencies:**
+
+node
+
+npm
 
 babyparse
 
@@ -51,24 +70,30 @@ twit
 
 ---
 
-####User Stories
-<!--TODO Link to your user stories - who are your users, what do they want, and why?-->
+####User stories
+
+Anyone interested in what people ate 100 years ago can follow [@coldfoodbot](twitter.com/coldfoodbot) on Twitter. The admin (OK, me) can edit scheduled tweets from the dashboard.
 
 ---
 
-####Wireframes
-<!--TODO Link to your wireframes – sketches of major views / interfaces in your application.-->
+####Admin wireframe
+
+![alt text](./public/images/Cold-Food_wireframe.png "Wireframe")
 
 ---
 
 
 ####Planned features
-<!--Descriptions of any unsolved problems or future features. -->
+
 Persona, which wwwhisper runs on, is shutting down 30. November.  Wwwhisper plans to migrate to a different service, but an alternative auth solution should be considered before then.
 
-Seed new tweets from the view.
+Seeding new tweets from the view.
 
-Post new snack tweets from the view.
+Sending snack tweets from the view.
+
+Multiple-day schedule view.
+
+Images of menus in tweets and association of dishes with menus (both depend on getting an API token).
 
 ---
 
