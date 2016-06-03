@@ -57,9 +57,9 @@ function populateTweets(){
   });
 }
 
-//TODO change isTweeted to true when tweeted
+//find a queued tweet, tweet it, and mark it as tweeted
 var queueBreakfast = function() {
- db.Tweet.findOne({ 'meal': 'breakfast', 'isTweeted': false }, function (err, tweet) {
+ db.Tweet.findOneAndUpdate({ 'meal': 'breakfast', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
   if (err) {
     return console.log('There was an error: ', err);
   }
@@ -68,7 +68,7 @@ var queueBreakfast = function() {
 }
 
 var queueLunch = function() {
- db.Tweet.findOne({ 'meal': 'lunch', 'isTweeted': false }, function (err, tweet) {
+ db.Tweet.findOneAndUpdate({ 'meal': 'lunch', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
   if (err) {
     return console.log('There was an error: ', err);
   }
@@ -77,7 +77,7 @@ var queueLunch = function() {
 }
 
 var queueDinner = function() {
-  db.Tweet.findOne({ 'meal': 'dinner', 'isTweeted': false }, function (err, tweet) {
+  db.Tweet.findOneAndUpdate({ 'meal': 'dinner', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
     if (err) {
       return console.log('There was an error: ', err);
     }
@@ -116,7 +116,7 @@ function tweetDinner(tweet){
   });
 }
 
-//TODO link tweetSnack to view
+//TODO link tweetSnack to a button in the view
 function tweetSnack(tweet){
   T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
@@ -130,12 +130,12 @@ function tweetSnack(tweet){
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 00 20 * * 0-6', function() {
+new CronJob('00 00 00 * * 0-6', function() {
   populateTweets()
   console.log('Tweets generated');
 }, null, true, 'America/Los_Angeles');
 
-new CronJob('00 30 07 * * 0-6', function() {
+new CronJob('00 00 08 * * 0-6', function() {
   queueBreakfast();
   console.log('Time for breakfast!');
 }, null, true, 'America/Los_Angeles');
