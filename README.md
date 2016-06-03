@@ -1,4 +1,4 @@
-## [@coldfoodbot](twitter.com/coldfoodbot) (Cold Food Bot)
+## @coldfoodbot (Cold Food Bot)
 
 ###A Twitter bot tweeting century-old meals, three times a day. Data comes from @nypl's ['What's on the Menu?'](http://menus.nypl.org/) collection. Runs off a custom Twitter dashboard on Heroku.
 
