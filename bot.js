@@ -8,7 +8,7 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-//read CSV data
+//read CSV file
 var Baby = require('babyparse');
 filePath = "menu-data/Dish.csv";
 parsed = Baby.parseFiles(filePath, {
@@ -16,7 +16,7 @@ parsed = Baby.parseFiles(filePath, {
 });
 rows = parsed.data;
 
-//Generate a random dish
+//Pick a random dish
 function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
   var foundDish = rows[randomDishId].name;
@@ -34,31 +34,60 @@ function getRandomDish() {
 function populateTweets(){
   var oneDayOfTweets = [
     {
-      status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
+      status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish(),
+      meal: 'breakfast'
     },
     {
-      status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
+      status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish(),
+      meal: 'lunch'
     },
     {
-      status: 'Dinner: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
+      status: 'Dinner: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish(),
+      meal: 'dinner'
     },
     {
-      status: 'Snack: ' + getRandomDish() + ' and ' + getRandomDish()
+      status: 'Snack: ' + getRandomDish() + ' and ' + getRandomDish(),
+      meal: 'snack'
     }
   ];
 
   db.Tweet.create(oneDayOfTweets, function(err, tweets){
-    console.log(tweets);
-    if (err) { return console.log('Error: ', err); }
+    console.log("Tweets populated: ", tweets);
+    if (err) { return console.log('There was an error: ', err); }
   });
 }
 
 //TODO change isTweeted to true when tweeted
-//TODO don't show on page if true
+var queueBreakfast = function() {
+ db.Tweet.findOne({ 'meal': 'breakfast', 'isTweeted': false }, function (err, tweet) {
+  if (err) {
+    return console.log('There was an error: ', err);
+  }
+  tweetBreakfast(tweet);
+  });
+}
+
+var queueLunch = function() {
+ db.Tweet.findOne({ 'meal': 'lunch', 'isTweeted': false }, function (err, tweet) {
+  if (err) {
+    return console.log('There was an error: ', err);
+  }
+  tweetLunch(tweet);
+  });
+}
+
+var queueDinner = function() {
+  db.Tweet.findOne({ 'meal': 'dinner', 'isTweeted': false }, function (err, tweet) {
+    if (err) {
+      return console.log('There was an error: ', err);
+    }
+    tweetDinner(tweet);
+    });
+}
+
 //tweet methods
-//TODO pull statuses from populateTweets();
-function tweetBreakfast(){
-  T.post('statuses/update', { status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
+function tweetBreakfast(tweet){
+  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -67,8 +96,8 @@ function tweetBreakfast(){
   });
 }
 
-function tweetLunch(){
-  T.post('statuses/update', { status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
+function tweetLunch(tweet){
+  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -77,8 +106,8 @@ function tweetLunch(){
   });
 }
 
-function tweetDinner(){
-  T.post('statuses/update', { status: 'Dinner: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
+function tweetDinner(tweet){
+  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -87,8 +116,9 @@ function tweetDinner(){
   });
 }
 
-function tweetSnack(){
-  T.post('statuses/update', { status: 'Snack: ' + getRandomDish() + ' and ' + getRandomDish() }, function(err, data, response) {
+//TODO link tweetSnack to view
+function tweetSnack(tweet){
+  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -100,22 +130,22 @@ function tweetSnack(){
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 00 22 * * 0-6', function() {
+new CronJob('00 00 20 * * 0-6', function() {
   populateTweets()
   console.log('Tweets generated');
 }, null, true, 'America/Los_Angeles');
 
-new CronJob('00 15 07 * * 0-6', function() {
-  tweetBreakfast();
-  console.log('Breakfast tweeted');
+new CronJob('00 30 07 * * 0-6', function() {
+  queueBreakfast();
+  console.log('Time for breakfast!');
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('00 30 12 * * 0-6', function() {
-  tweetLunch();
-  console.log('Lunch tweeted');
+  queueLunch();
+  console.log('Time for lunch');
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('00 30 19 * * 0-6', function() {
-  tweetDinner();
-  console.log('Dinner tweeted');
+  queueDinner();
+  console.log('Time for dinner!');
 }, null, true, 'America/Los_Angeles');
