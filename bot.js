@@ -50,13 +50,13 @@ function populateTweets(){
       meal: 'snack'
     }
   ];
-populateTweets()
 
   db.Tweet.create(oneDayOfTweets, function(err, tweets){
     console.log("Tweets populated: ", tweets);
     if (err) { return console.log('There was an error: ', err); }
   });
 }
+populateTweets()
 
 //find a queued tweet, tweet it, and mark it as tweeted
 var queueBreakfast = function() {
