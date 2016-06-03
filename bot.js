@@ -56,7 +56,6 @@ function populateTweets(){
     if (err) { return console.log('There was an error: ', err); }
   });
 }
-populateTweets()
 
 //find a queued tweet, tweet it, and mark it as tweeted
 var queueBreakfast = function() {
