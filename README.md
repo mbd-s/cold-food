@@ -1,6 +1,6 @@
 ## [@coldfoodbot](twitter.com/coldfoodbot) (Cold Food Bot)
 
-###A Twitter bot tweeting century-old meals, three times a day. Data comes from @nypl's ['What's on the Menu?'](http://menus.nypl.org/) collection. Runs off a custom Twitter dashboard.
+###A Twitter bot tweeting century-old meals, three times a day. Data comes from @nypl's ['What's on the Menu?'](http://menus.nypl.org/) collection. Runs off a custom Twitter dashboard on Heroku.
 
 ---
 
@@ -22,6 +22,8 @@ Angular
 Express
 
 MongoDB
+
+Mongoose
 
 ---
 
@@ -63,6 +65,10 @@ twit
 ####Planned features
 <!--Descriptions of any unsolved problems or future features. -->
 Persona, which wwwhisper runs on, is shutting down 30. November.  Wwwhisper plans to migrate to a different service, but an alternative auth solution should be considered before then.
+
+Seed new tweets from the view.
+
+Post new snack tweets from the view.
 
 ---
 
