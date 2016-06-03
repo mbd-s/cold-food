@@ -42,7 +42,7 @@ To run your own bot, start by cloning this repo and installing the dependencies:
 
 `$ node bot.js`
 
-To run the 
+To run the
 
 **Dependencies:**
 
@@ -76,7 +76,7 @@ Anyone interested in what people ate 100 years ago can follow [@coldfoodbot](twi
 
 ---
 
-####Admin wireframe
+####Dashboard wireframe
 
 ![alt text](./public/images/Cold-Food_wireframe.png "Wireframe")
 
