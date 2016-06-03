@@ -1,31 +1,25 @@
 .header {
   margin-bottom: 50px;
 }
-
 input, select, textarea{
     color: blue;
-    margin-bottom: 7px;
+    /*margin-bottom: 7px;*/
     border: 2px solid;
 }
-
 textarea:focus, input:focus {
     color: blue;
 }
-
 .btn {
   margin-bottom: 30px
 }
-
 .btn.outline {
 	background: none;
 	padding: 8px 12px;
 }
-
 .btn-primary.outline {
 	border: 2px solid grey;
 	color: grey;
 }
-
 .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline.active {
   background: none;
   color: blue;
@@ -38,21 +32,16 @@ textarea:focus, input:focus {
 	color: grey;
 	box-shadow: none;
 }
-/*.glyphicon.spinning {
-    animation: spin 1s infinite linear;
-    -webkit-animation: spin2 1s infinite linear;
-    color: blue;
+.counter {
+  margin-left: 7px;
+  margin-top: 2px;
 }
-.glyphicon-refresh.spinning {
-  transform-origin: 48% 50%;
+.too-long {
+  color: red;
 }
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1) rotate(360deg); }
+.tweet-away {
+  color: blue;
 }
-
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
-}*/
+.button-group {
+  margin-top: -16px;
+}
