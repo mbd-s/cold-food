@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var TweetSchema = new Schema({
      status: String,
+     meal: String,
      isTweeted: {type: Boolean, default: false}
 });
 

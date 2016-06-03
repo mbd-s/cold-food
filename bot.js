@@ -34,7 +34,8 @@ function getRandomDish() {
 function populateTweets(){
   var oneDayOfTweets = [
     {
-      status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
+      status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish(),
+      meal: 'breakfast'
     },
     {
       status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish()
@@ -48,17 +49,43 @@ function populateTweets(){
   ];
 
   db.Tweet.create(oneDayOfTweets, function(err, tweets){
-    console.log(tweets);
+    console.log(tweets[0]);
     if (err) { return console.log('Error: ', err); }
   });
 }
 
+var queueBreakfast = function() {
+ db.Tweet.findOne({ 'meal': 'breakfast', 'isTweeted': false }, function (err, tweet) {
+  if (err) {
+    return console.log('Error: ', err);
+  }
+  tweetBreakfast(tweet);
+  });
+}
+
+var queueLunch = function() {
+ db.Tweet.findOne({ 'meal': 'lunch', 'isTweeted': false }, function (err, tweet) {
+  if (err) {
+    return console.log('Error: ', err);
+  }
+  tweetLunch(tweet);
+  });
+}
+
+var queueDinner = function() {
+  db.Tweet.findOne({ 'meal': 'dinner', 'isTweeted': false }, function (err, tweet) {
+    if (err) {
+      return console.log('Error: ', err);
+    }
+    tweetDinner(tweet);
+    });
+}
+
 //TODO change isTweeted to true when tweeted
-//TODO don't show on page if true
+
 //tweet methods
-//TODO pull statuses from populateTweets();
-function tweetBreakfast(){
-  T.post('statuses/update', { status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
+function tweetBreakfast(tweet){
+  T.post('statuses/update', { status: "iji"+tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -67,8 +94,8 @@ function tweetBreakfast(){
   });
 }
 
-function tweetLunch(){
-  T.post('statuses/update', { status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
+function tweetLunch(tweet){
+  T.post('statuses/update', { status: "iji"+tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -77,8 +104,8 @@ function tweetLunch(){
   });
 }
 
-function tweetDinner(){
-  T.post('statuses/update', { status: 'Dinner: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish() }, function(err, data, response) {
+function tweetDinner(tweet){
+  T.post('statuses/update', { status: "iji"+tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -87,8 +114,8 @@ function tweetDinner(){
   });
 }
 
-function tweetSnack(){
-  T.post('statuses/update', { status: 'Snack: ' + getRandomDish() + ' and ' + getRandomDish() }, function(err, data, response) {
+function tweetSnack(tweet){
+  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -105,17 +132,17 @@ new CronJob('00 00 22 * * 0-6', function() {
   console.log('Tweets generated');
 }, null, true, 'America/Los_Angeles');
 
-new CronJob('00 15 07 * * 0-6', function() {
-  tweetBreakfast();
-  console.log('Breakfast tweeted');
+new CronJob('00 30 07 * * 0-6', function() {
+  queueBreakfast();
+  console.log('Time for breakfast!');
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('00 30 12 * * 0-6', function() {
-  tweetLunch();
-  console.log('Lunch tweeted');
+  queueLunch();
+  console.log('Time for lunch');
 }, null, true, 'America/Los_Angeles');
 
 new CronJob('00 30 19 * * 0-6', function() {
-  tweetDinner();
-  console.log('Dinner tweeted');
+  queueDinner();
+  console.log('Time for dinner!');
 }, null, true, 'America/Los_Angeles');
