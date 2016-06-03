@@ -116,9 +116,10 @@ function tweetDinner(tweet){
   });
 }
 
+//TODO write queueSnack() function
 //TODO link tweetSnack to a button in the view
 function tweetSnack(tweet){
-  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
+  T.post('statuses/update', { status: "Snack: " + getRandomDish() + " and " + getRandomDish() }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
