@@ -72,7 +72,7 @@ twit
 
 ####User stories
 
-Anyone interested in what people ate 100 years ago can follow [@coldfoodbot](twitter.com/coldfoodbot) on Twitter. The admin (OK, me) can edit scheduled tweets from the dashboard.
+Anyone interested in what people ate 100 years ago can follow @coldfoodbot on Twitter. The admin (OK, me) can edit scheduled tweets from the dashboard.
 
 ---
 
