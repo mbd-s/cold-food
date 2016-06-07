@@ -57,7 +57,7 @@ function populateTweets(){
   });
 }
 
-//find a queued tweet, tweet it, and mark it as tweeted
+//find a queued tweet, call the tweet function, and mark it as tweeted
 var queueBreakfast = function() {
  db.Tweet.findOneAndUpdate({ 'meal': 'breakfast', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
   if (err) {
@@ -129,24 +129,25 @@ function tweetSnack(tweet){
 }
 
 //schedule the tweets at mealtimes
+//TODO (maybe) schedule snack tweets at random times
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 00 00 * * 0-6', function() {
+new CronJob('00 00 23 * * 0-6', function() {
   populateTweets()
   console.log('Tweets generated');
-}, null, true, 'America/Los_Angeles');
+}, null, true, 'America/New_York');
 
-new CronJob('00 00 08 * * 0-6', function() {
+new CronJob('00 45 07 * * 0-6', function() {
   queueBreakfast();
   console.log('Time for breakfast!');
-}, null, true, 'America/Los_Angeles');
+}, null, true, 'America/New_York');
 
 new CronJob('00 30 12 * * 0-6', function() {
   queueLunch();
-  console.log('Time for lunch');
-}, null, true, 'America/Los_Angeles');
+  console.log('Time for lunch!');
+}, null, true, 'America/New_York');
 
 new CronJob('00 30 19 * * 0-6', function() {
   queueDinner();
   console.log('Time for dinner!');
-}, null, true, 'America/Los_Angeles');
+}, null, true, 'America/New_York');
