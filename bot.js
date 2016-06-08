@@ -132,7 +132,7 @@ function tweetSnack(tweet){
 //TODO (maybe) schedule snack tweets at random times
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 00 23 * * 0-6', function() {
+new CronJob('00 00 20 * * 0-6', function() {
   populateTweets()
   console.log('Tweets generated');
 }, null, true, 'America/New_York');
