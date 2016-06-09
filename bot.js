@@ -34,15 +34,15 @@ function getRandomDish() {
 function populateTweets(){
   var oneDayOfTweets = [
     {
-      status: 'Breakfast: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish(),
+      status: 'Breakfast: ' + getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
       meal: 'breakfast'
     },
     {
-      status: 'Lunch: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish(),
+      status: 'Lunch: ' + getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
       meal: 'lunch'
     },
     {
-      status: 'Dinner: ' + getRandomDish() + '; ' + getRandomDish() + '; and ' + getRandomDish(),
+      status: 'Dinner: ' + getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
       meal: 'dinner'
     },
     {
