@@ -42,7 +42,6 @@ To run your own bot, start by cloning this repo and installing the dependencies:
 
 `$ node bot.js`
 
-To run the
 
 **Dependencies:**
 
@@ -67,12 +66,6 @@ express
 mongoose
 
 twit
-
----
-
-####User stories
-
-Anyone interested in what people ate 100 years ago can follow @coldfoodbot on Twitter. The admin (OK, me) can edit scheduled tweets from the dashboard.
 
 ---
 
