@@ -50,6 +50,7 @@ function populateTweets(){
       meal: 'snack'
     }
   ];
+  populateTweets();
 
   db.Tweet.create(oneDayOfTweets, function(err, tweets){
     console.log("Tweets populated: ", tweets);
