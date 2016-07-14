@@ -116,8 +116,6 @@ function tweetDinner(tweet){
   });
 }
 
-//TODO write queueSnack() function
-//TODO link tweetSnack to a button in the view
 function tweetSnack(tweet){
   T.post('statuses/update', { status: "Snack: " + getRandomDish() + " and " + getRandomDish() }, function(err, data, response) {
     if (err) {
@@ -129,10 +127,9 @@ function tweetSnack(tweet){
 }
 
 //schedule the tweets at mealtimes
-//TODO (maybe) schedule snack tweets at random times
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 15 11 * * 0-6', function() {
+new CronJob('00 00 20 * * 0-6', function() {
   populateTweets()
   console.log('Tweets generated');
 }, null, true, 'America/New_York');
