@@ -153,4 +153,4 @@ new CronJob('00 30 19 * * 0-6', function() {
 var http = require("http");
 setInterval(function() {
     http.get("http://cold-food.herokuapp.com");
-}, 300000);
+}, 1800000);
