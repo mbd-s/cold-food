@@ -149,8 +149,8 @@ new CronJob('00 30 19 * * 0-6', function() {
   console.log('Time for dinner!');
 }, null, true, 'America/New_York');
 
-//ping the site every five minutes to keep it from idling
+//ping the site every 15 minutes to keep the dynos from idling
 var http = require("http");
 setInterval(function() {
     http.get("http://cold-food.herokuapp.com");
-}, 1800000);
+}, 900000);
