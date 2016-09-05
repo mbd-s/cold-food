@@ -49,7 +49,7 @@ function populateTweets(){
       meal: 'dinner'
     },
     {
-      status: getRandomDish() + ' and ' + getRandomDish(),
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
       meal: 'snack'
     }
   ];
