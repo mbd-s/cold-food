@@ -8,6 +8,26 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
+function tweetMenu(){
+var menu = fs.readFileSync('http://images.nypl.org/index.php?id=3991470&t=w', { encoding: 'base64' })
+T.post('media/upload', { media_data: menu }, function (err, data, response) {
+  var mediaIdStr = data.media_id_string
+  var altText = "Historical menu from collection of NYPL."
+  var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+
+  T.post('media/metadata/create', meta_params, function (err, data, response) {
+    if (!err) {
+      var params = { status: 'Ferris Restaurant, 1948', media_ids: [mediaIdStr] }
+
+      T.post('statuses/update', params, function (err, data, response) {
+        console.log(data)
+      })
+    }
+  })
+})
+}
+tweetMenu();
+
 //read CSV file
 var Baby = require('babyparse');
 filePath = "menu-data/Dish.csv";
@@ -109,4 +129,4 @@ setInterval(function() {
 }, 900000);
 
 //tweet once on initialization
-queueMeal();
+// queueMeal();
