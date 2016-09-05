@@ -3,6 +3,8 @@
   <div>
 
     <input ng-model="tweet.status" type="text" class="form-control input-md">
+    <input type="checkbox" ng-model="tweet.isReady">
+    <label for="checkbox"> Ready</label>
 
     <div class="counter" ng-class="{'too-long' : (tweet.status.length > 140),
                                     'tweet-away' : (tweet.status.length <= 140)}">
