@@ -11,7 +11,7 @@ console.log('@ColdFoodBot is connected to Twitter.');
 var fs = require('fs');
 
 function tweetMenu(){
-var menu = fs.readFileSync('/Users/mbds/Desktop/cat.jpg', { encoding: 'base64' })
+var menu = fs.readFileSync('/Users/mbds/src/wdi/cold-food/cat.jpg', { encoding: 'base64' })
 T.post('media/upload', { media_data: menu }, function (err, data, response) {
   var mediaIdStr = data.media_id_string
   var altText = "Historical menu from collection of NYPL."
