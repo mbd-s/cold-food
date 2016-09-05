@@ -37,20 +37,16 @@ function getRandomDish() {
 function populateTweets(){
   var oneDayOfTweets = [
     {
-      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
-      meal: 'breakfast'
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
     },
     {
-      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
-      meal: 'lunch'
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
     },
     {
-      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
-      meal: 'dinner'
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
     },
     {
-      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
-      meal: 'snack'
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
     }
   ];
 
@@ -61,44 +57,17 @@ function populateTweets(){
 }
 
 //find a queued tweet, call the tweet function, and mark it as tweeted
-var queueBreakfast = function() {
- db.Tweet.findOneAndUpdate({ 'meal': 'breakfast', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
+var queueMeal = function() {
+ db.Tweet.findOneAndUpdate({ 'isReady': true, 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
   if (err) {
     return console.log('There was an error: ', err);
   }
-  tweetBreakfast(tweet);
+  tweetMeal(tweet);
   });
-}
-
-var queueLunch = function() {
- db.Tweet.findOneAndUpdate({ 'meal': 'lunch', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
-  if (err) {
-    return console.log('There was an error: ', err);
-  }
-  tweetLunch(tweet);
-  });
-}
-
-var queueDinner = function() {
-  db.Tweet.findOneAndUpdate({ 'meal': 'dinner', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
-    if (err) {
-      return console.log('There was an error: ', err);
-    }
-    tweetDinner(tweet);
-    });
-}
-
-var queueSnack = function() {
-  db.Tweet.findOneAndUpdate({ 'meal': 'snack', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
-    if (err) {
-      return console.log('There was an error: ', err);
-    }
-    tweetSnack(tweet);
-    });
 }
 
 //tweet methods
-function tweetBreakfast(tweet){
+function tweetMeal(tweet){
   T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
@@ -108,37 +77,7 @@ function tweetBreakfast(tweet){
   });
 }
 
-function tweetLunch(tweet){
-  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
-    if (err) {
-      console.log ("There was an error: ", err);
-    } else {
-      console.log(data);
-    }
-  });
-}
-
-function tweetDinner(tweet){
-  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
-    if (err) {
-      console.log ("There was an error: ", err);
-    } else {
-      console.log(data);
-    }
-  });
-}
-
-function tweetSnack(tweet){
-  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
-    if (err) {
-      console.log ("There was an error: ", err);
-    } else {
-      console.log(data);
-    }
-  });
-}
-
-//schedule the tweets at mealtimes
+//populate tweets once a day
 var CronJob = require('cron').CronJob;
 
 new CronJob('00 00 05 * * 0-6', function() {
@@ -146,28 +85,16 @@ new CronJob('00 00 05 * * 0-6', function() {
   console.log('Time to generate tweets!');
 }, null, true, 'Europe/Berlin');
 
-new CronJob('00 00 10 * * 0-6', function() {
-  queueBreakfast();
-  console.log('Time for breakfast!');
-}, null, true, 'Europe/Berlin');
-
-new CronJob('00 00 14 * * 0-6', function() {
-  queueLunch();
-  console.log('Time for lunch!');
-}, null, true, 'Europe/Berlin');
-
-new CronJob('00 00 18 * * 0-6', function() {
-  queueDinner();
-  console.log('Time for dinner!');
-}, null, true, 'Europe/Berlin');
-
-new CronJob('00 00 22 * * 0-6', function() {
-  queueSnack();
-  console.log('Time for a snack!');
-}, null, true, 'Europe/Berlin');
+//tweet once every three hours
+setInterval(function() {
+  queueMeal();
+}, 10800000);
 
 //ping the site every 15 minutes to keep the dynos from idling
 var http = require("http");
 setInterval(function() {
     http.get("http://cold-food.herokuapp.com");
 }, 900000);
+
+//tweet once on initialization
+queueMeal();
