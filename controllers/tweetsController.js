@@ -39,6 +39,7 @@ function update(req, res) {
   db.Tweet.findById(req.params.tweetId, function(err, foundTweet) {
     if(err) { console.log('tweetsController.update error', err); }
     foundTweet.status = req.body.status;
+    foundTweet.isReady = req.body.isReady;
     foundTweet.isTweeted = req.body.isTweeted;
     foundTweet.save(function(err, savedTweet) {
       if(err) { console.log('Saving updated tweet failed.'); }
