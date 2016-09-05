@@ -47,6 +47,18 @@ function populateTweets(){
     },
     {
       status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
+    },
+    {
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
+    },
+    {
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
+    },
+    {
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
+    },
+    {
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
     }
   ];
 
