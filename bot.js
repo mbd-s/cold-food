@@ -8,6 +8,8 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
+var fs = require('fs');
+
 function tweetMenu(){
 var menu = fs.readFileSync('/Users/mbds/Desktop/cat.jpg', { encoding: 'base64' })
 T.post('media/upload', { media_data: menu }, function (err, data, response) {
