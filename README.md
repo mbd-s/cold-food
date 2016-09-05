@@ -1,6 +1,6 @@
 ## @coldfoodbot (Cold Food Bot)
 
-###A Twitter bot tweeting century-old meals, three times a day. Data comes from @nypl's ['What's on the Menu?'](http://menus.nypl.org/) collection. Runs off a custom Twitter dashboard on Heroku.
+###A Twitter bot tweeting century-old meals every three hours. Data comes from @nypl's ['What's on the Menu?'](http://menus.nypl.org/) collection. (This bot isn't associated with the library, though.)
 
 ---
 
@@ -66,28 +66,3 @@ express
 mongoose
 
 twit
-
----
-
-####Dashboard wireframe
-
-![alt text](./public/images/Cold-Food_wireframe.png "Wireframe")
-
----
-
-
-####Planned features
-
-Persona, which wwwhisper runs on, is shutting down 30. November.  Wwwhisper plans to migrate to a different service, but an alternative auth solution should be considered before then.
-
-Seeding new tweets from the view.
-
-Sending snack tweets from the view.
-
-Multiple-day schedule view.
-
-Images of menus in tweets and association of dishes with menus (both depend on getting an API token).
-
----
-
-Favicon by Luis Prado, licensed under [Creative Commons](http://creativecommons.org/licenses/by/3.0/us/).
