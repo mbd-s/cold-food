@@ -9,7 +9,7 @@ var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
 function tweetMenu(){
-var menu = fs.readFileSync('http://images.nypl.org/index.php?id=3991470&t=w', { encoding: 'base64' })
+var menu = fs.readFileSync('/Users/mbds/Desktop/cat.jpg', { encoding: 'base64' })
 T.post('media/upload', { media_data: menu }, function (err, data, response) {
   var mediaIdStr = data.media_id_string
   var altText = "Historical menu from collection of NYPL."
