@@ -21,8 +21,11 @@ function getRandomDish() {
   var randomDishId = Math.floor(Math.random() * rows.length ) + 1;
   var foundDish = rows[randomDishId].name;
   foundDish = foundDish.trim();
-  if (foundDish.length > 40) {
-    console.log(foundDish, " is too long for Twitter. Retrying!");
+  if (foundDish.length > 42) {
+    console.log(foundDish, " might be too long for Twitter. Retrying!");
+    getRandomDish();
+  } else if (foundDish === "undefined") {
+    console.log(foundDish, " is not a dish. Transcription error?");
     getRandomDish();
   } else {
       console.log("Found a dish: ", foundDish);
@@ -34,19 +37,19 @@ function getRandomDish() {
 function populateTweets(){
   var oneDayOfTweets = [
     {
-      status: 'Breakfast: ' + getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
       meal: 'breakfast'
     },
     {
-      status: 'Lunch: ' + getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
       meal: 'lunch'
     },
     {
-      status: 'Dinner: ' + getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
+      status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish(),
       meal: 'dinner'
     },
     {
-      status: 'Snack: ' + getRandomDish() + ' and ' + getRandomDish(),
+      status: getRandomDish() + ' and ' + getRandomDish(),
       meal: 'snack'
     }
   ];
@@ -85,6 +88,15 @@ var queueDinner = function() {
     });
 }
 
+var queueSnack = function() {
+  db.Tweet.findOneAndUpdate({ 'meal': 'snack', 'isTweeted': false }, {$set: {'isTweeted': true}}, function (err, tweet) {
+    if (err) {
+      return console.log('There was an error: ', err);
+    }
+    tweetSnack(tweet);
+    });
+}
+
 //tweet methods
 function tweetBreakfast(tweet){
   T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
@@ -117,7 +129,7 @@ function tweetDinner(tweet){
 }
 
 function tweetSnack(tweet){
-  T.post('statuses/update', { status: "Snack: " + getRandomDish() + " and " + getRandomDish() }, function(err, data, response) {
+  T.post('statuses/update', { status: tweet.status }, function(err, data, response) {
     if (err) {
       console.log ("There was an error: ", err);
     } else {
@@ -129,25 +141,30 @@ function tweetSnack(tweet){
 //schedule the tweets at mealtimes
 var CronJob = require('cron').CronJob;
 
-new CronJob('00 00 20 * * 0-6', function() {
+new CronJob('00 00 05 * * 0-6', function() {
   populateTweets()
-  console.log('Tweets generated');
-}, null, true, 'America/New_York');
+  console.log('Time to generate tweets!');
+}, null, true, 'Europe/Berlin');
 
-new CronJob('00 45 07 * * 0-6', function() {
+new CronJob('00 00 10 * * 0-6', function() {
   queueBreakfast();
   console.log('Time for breakfast!');
-}, null, true, 'America/New_York');
+}, null, true, 'Europe/Berlin');
 
-new CronJob('00 30 12 * * 0-6', function() {
+new CronJob('00 00 14 * * 0-6', function() {
   queueLunch();
   console.log('Time for lunch!');
-}, null, true, 'America/New_York');
+}, null, true, 'Europe/Berlin');
 
-new CronJob('00 30 19 * * 0-6', function() {
+new CronJob('00 00 18 * * 0-6', function() {
   queueDinner();
   console.log('Time for dinner!');
-}, null, true, 'America/New_York');
+}, null, true, 'Europe/Berlin');
+
+new CronJob('00 00 22 * * 0-6', function() {
+  queueSnack();
+  console.log('Time for a snack!');
+}, null, true, 'Europe/Berlin');
 
 //ping the site every 15 minutes to keep the dynos from idling
 var http = require("http");
