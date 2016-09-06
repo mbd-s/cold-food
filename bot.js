@@ -121,4 +121,3 @@ queueMeal();
 
 //seeding
 populateTweets();
-populateTweets();
