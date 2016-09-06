@@ -118,6 +118,3 @@ setInterval(function() {
 
 //tweet once on initialization
 queueMeal();
-
-//seeding
-populateTweets();
