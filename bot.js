@@ -32,8 +32,8 @@ function getRandomDish() {
   if (foundDish.length > 42) {
     console.log(foundDish, " might be too long for Twitter. Retrying!");
     getRandomDish();
-  } else if (foundDish === "undefined") {
-    console.log(foundDish, " is not a dish. Transcription error?");
+  } else if (foundDish === undefined) {
+    console.log(foundDish, " is missing. Transcription error?");
     getRandomDish();
   } else {
       console.log("Found a dish: ", foundDish);
