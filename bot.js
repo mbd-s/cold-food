@@ -70,7 +70,7 @@ function populateTweets(){
     },
     {
       status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
-    s
+    }
   ];
 
   db.Tweet.create(oneDayOfTweets, function(err, tweets){
