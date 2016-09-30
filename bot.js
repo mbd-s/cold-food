@@ -70,7 +70,7 @@ function populateTweets(){
     },
     {
       status: getRandomDish() + ', ' + getRandomDish() + ', and ' + getRandomDish()
-    }
+    s
   ];
 
   db.Tweet.create(oneDayOfTweets, function(err, tweets){
@@ -112,6 +112,12 @@ new CronJob('00 00 05 * * 0-6', function() {
 setInterval(function() {
   queueMeal();
 }, 10800000);
+
+//ping the site every 30 minutes to keep the dynos from idling
+var http = require("http");
+setInterval(function() {
+  http.get("http://cold-food.herokuapp.com");
+}, 1800000);
 
 //tweet once on initialization
 queueMeal();
