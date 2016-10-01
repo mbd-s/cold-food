@@ -113,11 +113,11 @@ setInterval(function() {
   queueMeal();
 }, 10800000);
 
-//ping the site every 30 minutes to keep the dynos from idling
+//ping the site every 15 minutes to keep the dynos from idling
 var http = require("http");
 setInterval(function() {
   http.get("http://cold-food.herokuapp.com");
-}, 1800000);
+}, 900000);
 
 //tweet once on initialization
 queueMeal();
