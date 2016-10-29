@@ -8,14 +8,6 @@ var Twit = require('twit');
 var T = new Twit(config);
 console.log('@ColdFoodBot is connected to Twitter.');
 
-//TODO find a random menu in the NYPL database
-//base URL: http://api.menus.nypl.org/menus/
-//menu ids go from 23001 to 35526, so to get a random menu, add:
-//Math.floor(Math.random()*(12526)+23001);
-//grab the location, date, and image (large_src);
-//upload the image to Twitter
-//use the media_id to tweet the image along with the location and date
-
 //read CSV file
 var Baby = require('babyparse');
 filePath = "menu-data/Dish.csv";
